@@ -6,6 +6,8 @@
 # Options ['state', 'vm_extra_config', 'vm_disk', 'vm_nic', 'vm_hardware', 'esxi'] are required together
 # Note: vm_floppy support added in 2.0
 
+- hosts: all
+
 - vars:
   vcenter_host: vcenter.mydomain.local
   vcenter_username: myuser
