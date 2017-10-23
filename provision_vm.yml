@@ -6,18 +6,16 @@
 # Options ['state', 'vm_extra_config', 'vm_disk', 'vm_nic', 'vm_hardware', 'esxi'] are required together
 # Note: vm_floppy support added in 2.0
 
-- vars:
-  vcenter_host: vcenter.mydomain.local
-  vcenter_username: myuser
-  vcenter_passwd: mypass
-  vcenter_guest: newvm001
-  vcenter_state: powered_on
-  vCenter_datastore: storage001
-  vCenter_datacenter: MyDatacenter
-  vm_hostname: NewVM001
-
-- name: Provision a new VM
-  hosts: all
+- hosts: all
+  vars:
+    vcenter_host: vcenter.mydomain.local
+    vcenter_username: myuser
+    vcenter_passwd: mypass
+    vcenter_guest: newvm001
+    vcenter_state: powered_on
+    vCenter_datastore: storage001
+    vCenter_datacenter: MyDatacenter
+    vm_hostname: NewVM001
   tasks:
     - name: Connect to VCenter and provision a new VM
       vcenter_hostname: {{ vcenter_host }}
