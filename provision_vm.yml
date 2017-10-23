@@ -12,6 +12,9 @@
   vcenter_passwd: mypass
   vcenter_guest: newvm001
   vcenter_state: powered_on
+  vCenter_datastore: storage001
+  vCenter_datacenter: MyDatacenter
+  vm_hostname: NewVM001
 
 - vsphere_guest:
     vcenter_hostname: {{ vcenter_host }}
@@ -28,7 +31,7 @@
       disk1:
         size_gb: 10
         type: thin
-        datastore: storage001
+        datastore: {{ vcenter_datastore }}
         # VMs can be put into folders. The value given here is either the full path
         # to the folder (e.g. production/customerA/lamp) or just the last component
         # of the path (e.g. lamp):
@@ -47,13 +50,13 @@
       num_cpus: 2
       osid: centos64Guest
       scsi: paravirtual
-      vm_cdrom:
-        type: "iso"
-        iso_path: "DatastoreName/cd-image.iso"
-      vm_floppy:
-        type: "image"
-        image_path: "DatastoreName/floppy-image.flp"
+#      vm_cdrom:
+#        type: "iso"
+#        iso_path: "DatastoreName/cd-image.iso"
+#      vm_floppy:
+#        type: "image"
+#        image_path: "DatastoreName/floppy-image.flp"
     esxi:
-      datacenter: MyDatacenter
-      hostname: esx001.mydomain.local
+      datacenter: {{ vcenter_datacenter }}
+      hostname: {{ vm_hostname }}
 
