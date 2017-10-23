@@ -16,48 +16,50 @@
   vCenter_datacenter: MyDatacenter
   vm_hostname: NewVM001
 
-- vsphere_guest:
-    hosts: all
-    vcenter_hostname: {{ vcenter_host }}
-    username: {{ vcenter_username }}
-    password: {{ vcenter_passwd }}
-    guest: {{ vcenter_guest }}
-    state: {{ vcenter_state }}
-    vm_extra_config:
-      vcpu.hotadd: yes
-      mem.hotadd:  yes
-      notes: This is a test VM
-      folder: MyFolder
-    vm_disk:
-      disk1:
-        size_gb: 10
-        type: thin
-        datastore: {{ vcenter_datastore }}
-        # VMs can be put into folders. The value given here is either the full path
-        # to the folder (e.g. production/customerA/lamp) or just the last component
-        # of the path (e.g. lamp):
-        folder: production/customerA/lamp
-    vm_nic:
-      nic1:
-        type: vmxnet3
-        network: VM Network
-        network_type: standard
-      nic2:
-        type: vmxnet3
-        network: dvSwitch Network
-        network_type: dvs
-    vm_hardware:
-      memory_mb: 2048
-      num_cpus: 2
-      osid: centos64Guest
-      scsi: paravirtual
-#      vm_cdrom:
-#        type: "iso"
-#        iso_path: "DatastoreName/cd-image.iso"
-#      vm_floppy:
-#        type: "image"
-#        image_path: "DatastoreName/floppy-image.flp"
-    esxi:
-      datacenter: {{ vcenter_datacenter }}
-      hostname: {{ vm_hostname }}
+- name: Provision a new VM
+  hosts: all
+  tasks:
+    - name: Connect to VCenter and provision a new VM
+      vcenter_hostname: {{ vcenter_host }}
+      username: {{ vcenter_username }}
+      password: {{ vcenter_passwd }}
+      guest: {{ vcenter_guest }}
+      state: {{ vcenter_state }}
+      vm_extra_config:
+        vcpu.hotadd: yes
+        mem.hotadd:  yes
+        notes: This is a test VM
+        folder: MyFolder
+      vm_disk:
+        disk1:
+          size_gb: 10
+          type: thin
+          datastore: {{ vcenter_datastore }}
+          # VMs can be put into folders. The value given here is either the full path
+          # to the folder (e.g. production/customerA/lamp) or just the last component
+          # of the path (e.g. lamp):
+          folder: production/customerA/lamp
+      vm_nic:
+        nic1:
+          type: vmxnet3
+          network: VM Network
+          network_type: standard
+        nic2:
+          type: vmxnet3
+          network: dvSwitch Network
+          network_type: dvs
+      vm_hardware:
+        memory_mb: 2048
+        num_cpus: 2
+        osid: centos64Guest
+        scsi: paravirtual
+  #      vm_cdrom:
+  #        type: "iso"
+  #        iso_path: "DatastoreName/cd-image.iso"
+  #      vm_floppy:
+  #        type: "image"
+  #        image_path: "DatastoreName/floppy-image.flp"
+      esxi:
+        datacenter: {{ vcenter_datacenter }}
+        hostname: {{ vm_hostname }}
 
