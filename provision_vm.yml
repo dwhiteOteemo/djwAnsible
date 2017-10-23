@@ -1,5 +1,7 @@
 - name: Provision a new VM
-  hosts: all
+  hosts: localhost
+  connection: local
+  gather_facts: no
   vars:
     vcenter_host: vcenter.mydomain.local
     vcenter_username: myuser
