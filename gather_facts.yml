@@ -10,6 +10,6 @@
       password: '@p1r3@d0n1Y4D1$'
       datacenter: ATPCO - DCA 
       validate_certs: no
-      uuid: 421e4592-c069-924d-ce20-7e7533fab926
+      name: dis01atw01
     delegate_to: localhost
     register: facts
