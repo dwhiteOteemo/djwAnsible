@@ -2,8 +2,8 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
-    dcenter: "vcentera"
-    vm_name: "dis01atw01"
+    dcenter: DCA
+    vm_uuid: 04e9279c-b375-11e7-bff3-005056a39f94 
   tasks:
   - name: get vm facts
     vmware_guest_facts:
@@ -12,7 +12,6 @@
       password: '@p1r3@d0n1Y4D1$'
       datacenter: '{{ dcenter }}' 
       validate_certs: no
-      name: '{{ vm_name }}'
-      uuid: 04e9279c-b375-11e7-bff3-005056a39f94 
+      uuid: '{{ vm_uuid }}'
     delegate_to: localhost
     register: facts
