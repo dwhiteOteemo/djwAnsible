@@ -3,6 +3,7 @@
   vars:
     description: “Test VSphere Connectivity”
     dcenter: "vcentera"
+    vm_name: "dis01atw01"
   tasks:
   - name: get vm facts
     vmware_guest_facts:
@@ -11,6 +12,6 @@
       password: '@p1r3@d0n1Y4D1$'
       datacenter: '{{ dcenter }}' 
       validate_certs: no
-      name: dis01tst01
+      name: '{{ vm_name }}'
     delegate_to: localhost
     register: facts
