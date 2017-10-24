@@ -1,0 +1,16 @@
+- name: Get vm facts
+  hosts: localhost
+  connection: local
+  vars:
+    vcenter_host: vcenter.mydomain.local
+    vcenter_username: myuser
+    vcenter_passwd: mypass
+    vcenter_guest: newvm001
+
+  tasks:
+       - vsphere_guest:
+           vcenter_hostname: "{{ vcenter_host }}"
+           username: "{{ vcenter_username }}"
+           password: "{{ vcenter_passwd }}"
+           guest: "{{ vcenter_guest }}"
+           vmware_guest_facts: yes
