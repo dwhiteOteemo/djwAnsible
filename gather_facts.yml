@@ -1,14 +1,14 @@
 ---
 - hosts: localhost
   vars:
-    description: “this is a leaf switch”
+    description: “Test VSphere Connectivity”
   tasks:
   - name: get vm facts
     vmware_guest_facts:
-      hostname: 192.168.1.209
-      username: administrator@vsphere.local
-      password: vmware
-      datacenter: ha-datacenter
+      hostname: vcentera.atpiad1.local
+      username: atpiad1\disapiuser
+      password: @p1r3@d0n1Y4D1$
+      datacenter: ATPCO - DCA 
       validate_certs: no
       uuid: 421e4592-c069-924d-ce20-7e7533fab926
     delegate_to: localhost
