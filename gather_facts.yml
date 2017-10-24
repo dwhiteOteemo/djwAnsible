@@ -2,8 +2,8 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
-    dcenter: 
-    vm_name: 
+    dcenter: datacentername
+    vm_name: vmname
   tasks:
   - name: get vm facts
     vmware_guest_facts:
