@@ -1,6 +1,9 @@
-- name: Get vm facts
-  hosts: localhost
+---
+- hosts: localhost
+  vars:
+    description: “this is a leaf switch”
   tasks:
+  - name: get vm facts
     vmware_guest_facts:
       hostname: 192.168.1.209
       username: administrator@vsphere.local
