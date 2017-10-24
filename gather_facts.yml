@@ -10,6 +10,6 @@
       password: '@p1r3@d0n1Y4D1$'
       datacenter: ATPCO - DCA 
       validate_certs: no
-      guestFullName: dis01atw01
+      name: dis01tst01
     delegate_to: localhost
     register: facts
