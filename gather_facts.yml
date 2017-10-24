@@ -2,13 +2,14 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
+    dcenter: "vcentera"
   tasks:
   - name: get vm facts
     vmware_guest_facts:
       hostname: vcentera.atpiad1.local
       username: atpiad1\disapiuser
       password: '@p1r3@d0n1Y4D1$'
-      datacenter: DCA 
+      datacenter: '{{ dcenter }}' 
       validate_certs: no
       name: dis01tst01
     delegate_to: localhost
