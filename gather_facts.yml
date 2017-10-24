@@ -8,9 +8,12 @@
     vcenter_guest: newvm001
 
   tasks:
-       - vsphere_guest:
-           vcenter_hostname: "{{ vcenter_host }}"
-           username: "{{ vcenter_username }}"
-           password: "{{ vcenter_passwd }}"
-           guest: "{{ vcenter_guest }}"
-           vmware_guest_facts: yes
+  - vmware_guest_facts:
+    hostname: 192.168.1.209
+    username: administrator@vsphere.local
+    password: vmware
+    datacenter: ha-datacenter
+    validate_certs: no
+    uuid: 421e4592-c069-924d-ce20-7e7533fab926
+  delegate_to: localhost
+  register: facts
