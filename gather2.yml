@@ -3,7 +3,7 @@
   vars:
     description: “Test VSphere Connectivity”
     dcenter: DCA
-    vm_uuid: 04e9279c-b375-11e7-bff3-005056a39f94 
+    vm_uuid: 50373e53-b2a6-98e5-e323-2987bd4edee6
   tasks:
   - name: get vm facts
     vmware_guest_facts:
