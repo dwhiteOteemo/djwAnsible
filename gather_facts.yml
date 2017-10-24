@@ -1,19 +1,12 @@
 - name: Get vm facts
   hosts: localhost
-  connection: local
-  vars:
-    vcenter_host: vcenter.mydomain.local
-    vcenter_username: myuser
-    vcenter_passwd: mypass
-    vcenter_guest: newvm001
-
   tasks:
-    - vmware_guest_facts:
+    vmware_guest_facts:
       hostname: 192.168.1.209
       username: administrator@vsphere.local
       password: vmware
       datacenter: ha-datacenter
       validate_certs: no
       uuid: 421e4592-c069-924d-ce20-7e7533fab926
-      delegate_to: localhost
-      register: facts
+    delegate_to: localhost
+    register: facts
