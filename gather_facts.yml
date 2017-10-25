@@ -2,6 +2,9 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
+    vc_hostname: vcenterhostname
+    vc_username: vcenterusername
+    vc_passwd: vcenterpassword
     dcenter: datacentername
     vm_name: vmname
     vm_folder: /DCA/vm/Cloudforms
