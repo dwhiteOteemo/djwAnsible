@@ -20,4 +20,5 @@
       folder: '{{ vm_folder }}'
     delegate_to: localhost
     register: facts
-    debug: facts.stdout_lines
+    debug: 
+      var: facts.stdout_lines
