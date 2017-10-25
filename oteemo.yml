@@ -7,7 +7,6 @@
     vc_passwd: vcenterpassword
     dcenter: datacentername
     vm_name: vmname
-    vm_folder: /DCA/vm/Cloudforms
   tasks:
   - name: get vm facts
     vmware_guest_find:
@@ -17,7 +16,6 @@
       datacenter: '{{ dcenter }}'
       validate_certs: no
       name: '{{ vm_name }}'
-      folder: '{{ vm_folder }}'
     delegate_to: localhost
     register: facts
   - debug:
