@@ -22,3 +22,13 @@
     register: facts
   - debug:
       var: facts
+  - name: Find Guest's Folder using name
+    vmware_guest_find:
+      hostname: '{{ vc_hostname }}'
+      username: '{{ vc_username }}'
+      password: '{{ vc_passwd }}'
+      validate_certs: no
+      name: testvm
+    register: vm_folder
+  - debug:
+      var: vm_folder
