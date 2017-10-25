@@ -18,7 +18,6 @@
       validate_certs: no
       name: '{{ vm_name }}'
       folder: '{{ vm_folder }}'
-    delegate_to: localhost
     register: facts
   - debug:
-      var: facts.virtual_machines
+      var: facts
