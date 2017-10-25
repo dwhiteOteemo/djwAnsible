@@ -22,4 +22,4 @@
     register: facts
   - name: print output
     debug:
-      var: facts.stdout_lines
+      var: facts.virtual_machines
