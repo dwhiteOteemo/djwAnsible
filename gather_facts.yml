@@ -4,7 +4,7 @@
     description: “Test VSphere Connectivity”
     dcenter: datacentername
     vm_name: vmname
-    vm_folder: vm
+    vm_folder: /DCA/vm/Cloudforms
   tasks:
   - name: get vm facts
     vmware_guest_facts:
