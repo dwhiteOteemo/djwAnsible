@@ -16,6 +16,7 @@
       password: '{{ vc_passwd }}'
       validate_certs: no
       name: testvm
+    delegate_to: localhost
     register: vm_folder
   - debug:
       var: vm_folder
