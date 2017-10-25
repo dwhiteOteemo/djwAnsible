@@ -2,15 +2,18 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
+    vc_hostname: vcenterhostname
+    vc_username: vcenterusername
+    vc_passwd: vcenterpassword
     dcenter: datacentername
     vm_name: vmname
     vm_folder: /DCA/vm/Cloudforms
   tasks:
   - name: get vm facts
     vmware_guest_facts:
-      hostname: vcentera.atpiad1.local
-      username: atpiad1\disapiuser
-      password: '@p1r3@d0n1Y4D1$'
+      hostname: '{{ vc_hostname }}'
+      username: '{{ vc_username }}'
+      password: '{{ vc_passwd }}'
       datacenter: '{{ dcenter }}' 
       validate_certs: no
       name: '{{ vm_name }}'
