@@ -20,6 +20,5 @@
       folder: '{{ vm_folder }}'
     delegate_to: localhost
     register: facts
-  - name: print output
-    debug:
+  - debug:
       var: facts.virtual_machines
