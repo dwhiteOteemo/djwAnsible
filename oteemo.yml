@@ -2,21 +2,8 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
-    vc_hostname: vcenterhostname
-    vc_username: vcenterusername
-    vc_passwd: vcenterpassword
-    dcenter: datacentername
-    vm_name: vmname
+    credential_name: somecredential
+    contents: "{{ lookup('env', 'foo') }}"
+
   tasks:
-  - name: get vm facts
-    vmware_guest_find:
-      hostname: '{{ vc_hostname }}'
-      username: '{{ vc_username }}'
-      password: '{{ vc_passwd }}'
-      datacenter: '{{ dcenter }}'
-      validate_certs: no
-      name: '{{ vm_name }}'
-    delegate_to: localhost
-    register: facts
-  - debug:
-      var: facts
+  - debug: msg="the value of vcenter_username is {{ contents }}"
