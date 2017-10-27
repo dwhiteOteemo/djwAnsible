@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  vars:
+    description: “Delete a VM”
+    vc_hostname: vcenterhostname
+    vc_username: vcenterusername
+    vc_passwd: vcenterpassword
+    dcenter: datacentername
+    vm_uuid: vmname
+  tasks:
+    - name: Remove a VM by uuid
+      vmware_guest:
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vm_passwd }}"
+        uuid: "{{ vm_uuid }}"
+        state: absent
+      delegate_to: localhost
