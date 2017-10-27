@@ -3,8 +3,8 @@
   vars:
     description: “Test VSphere Connectivity”
     vc_hostname: vcenterhostname
-    vc_username: vcenterusername
-    vc_passwd: vcenterpassword
+    vc_username: lookup('env','vcenter_username')
+    vc_passwd: lookup('env','vcenter_password')
     dcenter: datacentername
     vm_name: vmname
     vm_folder: /DCA/vm/Cloudforms
