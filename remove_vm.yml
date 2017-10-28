@@ -6,13 +6,20 @@
     vc_username: vcenterusername
     vc_passwd: vcenterpassword
     dcenter: datacentername
-    vm_uuid: vmname
+    vm_name: vmname
+    vm_folder: /DCA/vm/CloudForms
+    vm_datastore: ExternalDS-13
+    vm_nodename: 172.16.5.13
   tasks:
-    - name: Remove a VM by uuid
+    - name: create the VM
       vmware_guest:
         hostname: "{{ vc_hostname }}"
         username: "{{ vc_username }}"
-        password: "{{ vm_passwd }}"
-        uuid: "{{ vm_uuid }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        folder: "{{ vm_folder }}"
+        datacenter: "{{ dcenter }}"
+        esxi_hostname: "{{ vm_nodename }}"
         state: absent
-      delegate_to: localhost
+      register: deploy
+
