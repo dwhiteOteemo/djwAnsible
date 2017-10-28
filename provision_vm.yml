@@ -7,10 +7,10 @@
     vc_passwd: vcenterpassword
     dcenter: datacentername
     vm_name: vmname
-    vm_folder: /DCA/vm/Templates
+    vm_folder: /DCA/vm/CloudForms
     vm_datastore: ExternalDS-13
     vm_nodename: 172.16.5.13
-    vm_template: cfme-vsphere-5.8.1.5-1.x86_64.vsphere
+    vm_template: baselineTemplate
   tasks:
     - name: create the VM
       vmware_guest:
