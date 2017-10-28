@@ -3,8 +3,8 @@
   vars:
     description: “Delete a VM”
     vc_hostname: vcenterhostname
-    vc_username: vcenterusername
-    vc_passwd: vcenterpassword
+    vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     dcenter: datacentername
     vm_name: vmname
     vm_folder: /DCA/vm/CloudForms
