@@ -19,6 +19,7 @@
         name: "{{ vm_name }}"
         folder: "{{ vm_folder }}"
         datacenter: "{{ dcenter }}"
+        validate_certs: no
         esxi_hostname: "{{ vm_nodename }}"
         state: absent
       register: deploy
