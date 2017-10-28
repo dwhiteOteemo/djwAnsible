@@ -27,12 +27,14 @@
           datastore: ExternalDS-13
         hardware:
             memory_mb: 512
-            num_cpus: 1
+            num_cpus: 2
             osid: centos64guest
             scsi: paravirtual
         datacenter: "{{ dcenter }}"
         esxi_hostname: "{{ vm_nodename }}"
         template: "{{ vm_template }}"
         wait_for_ip_address: yes
+        customization:
+          password: smartvm
       register: deploy
 
