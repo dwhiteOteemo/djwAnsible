@@ -1,5 +1,6 @@
-- name: show return value of command module
+- name: simple test playbook
   hosts: all
   tasks:
     - name: simple ping
       ping:
+      echo: 'test'
