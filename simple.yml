@@ -1,8 +1,10 @@
 - name: simple test playbook
   hosts: all
+  vars:
+    simplemessage: Message
   tasks:
     - name: Get hostname
       command: hostname
       register: hname
-    - debug: msg="{{ hname.stdout }}"
+    - debug: msg="{{ simplemessage }} {{ hname.stdout }}"
     
