@@ -1,6 +1,8 @@
 - name: simple test playbook
   hosts: all
   tasks:
-    - name: simple ping
-      ping:
-      echo: 'test'
+    - name: Get hostname
+      command: hostname
+      register: hname
+    - debug: msg="{{ hname.stdout }}"
+    
