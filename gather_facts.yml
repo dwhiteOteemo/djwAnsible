@@ -2,7 +2,7 @@
 - hosts: localhost
   vars:
     description: “Test VSphere Connectivity”
-    vc_hostname: vcenterhostname
+    vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     dcenter: datacentername
