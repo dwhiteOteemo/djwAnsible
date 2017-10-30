@@ -16,8 +16,6 @@
         name: "{{ vm_name }}"
         state: "poweredoff"
         template: ""
-      register: shut
-      validate_certs: no
     when: state == "absent"
 
   - name: Set VM to desired state
