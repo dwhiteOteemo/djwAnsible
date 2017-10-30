@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  vars:
-    description: “Test VSphere Connectivity”
-    credential_name: somecredential
-    contents: "{{ lookup('env', 'foo') }}"
-
-  tasks:
-  - debug: msg="the value of vcenter_username is {{ contents }}"
