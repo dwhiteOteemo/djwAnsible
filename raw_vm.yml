@@ -18,7 +18,7 @@
         username: "{{ vc_username }}"
         password: "{{ vc_passwd }}"
         name: "{{ vm_name }}"
-        state: poweredon
+        state: poweredoff
         folder: "{{ vm_folder }}"
         disk:
         - size_gb: 16
