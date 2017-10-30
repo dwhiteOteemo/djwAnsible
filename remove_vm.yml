@@ -23,3 +23,15 @@
         datacenter: "{{ dcenter }}"
         esxi_hostname: "{{ vm_nodename }}"
         template: ""
+    - name: Delete the VM
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        state: "absent"
+        folder: "{{ vm_folder }}"
+        datacenter: "{{ dcenter }}"
+        esxi_hostname: "{{ vm_nodename }}"
+        template: ""
