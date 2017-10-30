@@ -16,7 +16,6 @@
         name: "{{ vm_name }}"
         state: "poweredoff"
         template: ""
-      when: state == "absent"
 
     - name: Set VM to desired state
       vmware_guest:
