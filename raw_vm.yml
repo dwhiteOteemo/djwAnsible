@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  vars:
+    description: “Provision a VM from a template”
+    vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+    vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+    dcenter: datacentername
+    vm_name: vmname
+    vm_folder: foldername
+    vm_datastore: ExternalDS-13
+    vm_nodename: 172.16.5.13
+  tasks:
+    - name: create the VM
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        state: poweredon
+        folder: "{{ vm_folder }}"
+        disk:
+        - size_gb: 16
+          type: thin
+          datastore: ExternalDS-13
+        hardware:
+            memory_mb: 512
+            num_cpus: 1
+            osid: centos64guest
+            scsi: paravirtual
+        datacenter: "{{ dcenter }}"
+        esxi_hostname: "{{ vm_nodename }}"
+        wait_for_ip_address: yes
+      register: deploy
+
