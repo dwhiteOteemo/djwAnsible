@@ -20,12 +20,12 @@
         name: "{{ vm_name }}"
         state: poweredoff
         folder: "{{ vm_folder }}"
+        guest_id: centos7_64Guest
         disk:
         - size_gb: 16
           type: thin
           datastore: ExternalDS-13
         hardware:
-            hw_guest_id: centos7_64Guest
             memory_mb: 512
             num_cpus: 1
             osid: centos64guest
