@@ -16,14 +16,14 @@
         name: "{{ vm_name }}"
         state: "poweredoff"
         template: ""
-    when: state == "absent"
+      when: state == "absent"
 
-  - name: Set VM to desired state
-    vmware_guest:
-      validate_certs: False
-      hostname: "{{ vc_hostname }}"
-      username: "{{ vc_username }}"
-      password: "{{ vc_passwd }}"
-      name: "{{ vm_name }}"
-      state: "{{ state }}"
-      template: ""
+    - name: Set VM to desired state
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        state: "{{ state }}"
+        template: ""
