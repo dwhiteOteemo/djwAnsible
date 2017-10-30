@@ -7,19 +7,6 @@
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     vm_name: vmname
   tasks:
-    - name: create the VM
-      vmware_guest:
-        hostname: "{{ vc_hostname }}"
-        username: "{{ vc_username }}"
-        password: "{{ vc_passwd }}"
-        name: "{{ vm_name }}"
-        folder: "{{ vm_folder }}"
-        datacenter: "{{ dcenter }}"
-        validate_certs: no
-        esxi_hostname: "{{ vm_nodename }}"
-        state: absent
-      register: deploy
-
     - name: Shutdown VM first if delete required
       vmware_guest:
         validate_certs: False
