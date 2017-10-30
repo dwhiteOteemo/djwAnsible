@@ -6,6 +6,7 @@
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     vm_name: vmname
+    dcenter: Lab
   tasks:
     - name: Shutdown VM first if delete required
       vmware_guest:
@@ -15,6 +16,7 @@
         password: "{{ vc_passwd }}"
         name: "{{ vm_name }}"
         state: "poweredoff"
+        datacenter: "{{ dcenter }}"
         template: ""
 
     - name: Set VM to desired state
@@ -24,5 +26,6 @@
         username: "{{ vc_username }}"
         password: "{{ vc_passwd }}"
         name: "{{ vm_name }}"
-        state: "{{ state }}"
+        datacenter: "{{ dcenter }}"
+        state: absent
         template: ""
