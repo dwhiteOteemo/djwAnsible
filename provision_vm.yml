@@ -21,7 +21,7 @@
         state: poweredon
         folder: "{{ vm_folder }}"
         disk:
-        - size_gb: 16
+        - size_gb: 40
           type: thin
           datastore: ExternalDS-13
         hardware:
