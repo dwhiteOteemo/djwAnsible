@@ -31,7 +31,7 @@
             osid: centos64guest
             scsi: paravirtual
         datacenter: "{{ dcenter }}"
-        esxi_hostname: "{{ vm_nodename }}"
+        cluster: "{{ vm_cluster }}"
         template: "{{ vm_template }}"
         networks:
         - name: VM Network
