@@ -1,0 +1,53 @@
+---
+- hosts: localhost
+  vars:
+    description: “Provision a VM from a template”
+    vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+    vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+    dcenter: datacentername
+    vm_name: vmname
+    vm_folder: /DCA/vm/ 
+    vm_datastore: datastore 
+    vm_cluster: vmwarecluster 
+    vm_template: atpco-rhel7-master 
+  tasks:
+    - name: create the VM
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        state: poweredon
+        folder: "{{ vm_folder }}"
+        disk:
+        - size_gb: 64
+          type: thin
+          datastore: "{{ vm_datastore }}"
+        - size_gb: 32
+          type: thin
+          datastore: "{{ vm_datastore }}"
+        - size_gb: 20
+          type: thin
+          datastore: "{{ vm_datastore }}"
+        networks:
+        - name: "{{ vm_network }}"
+          ip: "{{ vm_ip }}" 
+          netmask: "{{ vm_netmask }}"
+          gateway: "{{ vm_gateway }}"
+          type: static 
+        hardware:
+            memory_mb: 10000
+            num_cpus: 1
+            osid: rhel7_64Guest 
+            scsi: paravirtual
+        datacenter: "{{ dcenter }}"
+        cluster: "{{ vm_cluster }}"
+        template: "{{ vm_template }}"
+        wait_for_ip_address: yes
+        customization:
+          dns_servers: "{{ vm_dns }}"
+          dns_suffix: "{{ vm_search }}"
+      register: deploy
+
