@@ -9,7 +9,7 @@
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     dcenter: "{{ data_center }}"
-    servers: "{{ master_servers }}"
+    servers: "{{ infra_servers }}"
     vm_nodename: "{{ vm_host }}"
     vm_nw: "{{ vm_nw }}"
     vm_nw_gateway: "{{ vm_nw_gateway }}"
