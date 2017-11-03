@@ -6,3 +6,7 @@ master_servers:
     folder: /Lab/vm/OSE
     ip_address: 172.16.0.51
     template_name: baselineTemplate
+  - server_name: ose-node02
+    folder: /Lab/vm/OSE
+    ip_address: 172.16.0.52
+    template_name: baselineTemplate

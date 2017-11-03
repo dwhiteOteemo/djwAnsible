@@ -19,7 +19,7 @@
       username: "{{ vc_username }}"
       password: "{{ vc_passwd }}"
       name: "{{ item.server_name }}"
-      state: poweredoff
+      state: poweredon
       folder: "{{ item.folder }}"
       disk:
       - size_gb: 16
