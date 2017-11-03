@@ -15,13 +15,6 @@ master_servers:
   - server_name: ose-master01
     folder: /Lab/vm/OSE
     template_name: ose-master
-    networks:
-    - name: VM Network
-      ip: 172.16.0.54
-      netmask: "{{ vm_nw_netmask }}"
-      gateway: "{{ vm_nw_gateway }}"
-      domain: "{{ vm_nw_domain }}"
-      type: static
     disk:
     - size_gb: 64
       type: thin
@@ -60,4 +53,9 @@ infra_servers:
     - size_gb: 16
       type: thin
       datastore: "{{ data_store }}"
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
 
