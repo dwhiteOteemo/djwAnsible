@@ -20,11 +20,20 @@ master_servers:
 infra_servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
-    ip_address: 172.16.0.52
     template_name: baselineTemplate
     networks:
     - name: VM Network
-      ip: 172.16.0.29
+      ip: 172.16.0.54
+      netmask: "{{ vm_nw_netmask }}"
+      gateway: "{{ vm_nw_gateway }}"
+      domain: "{{ vm_nw_domain }}"
+      type: static
+  - server_name: ose-infra02
+    folder: /Lab/vm/OSE
+    template_name: baselineTemplate
+    networks:
+    - name: VM Network
+      ip: 172.16.0.55
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
