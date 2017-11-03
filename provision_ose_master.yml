@@ -13,37 +13,37 @@
     vm_nodename: "{{ vm_host }}"
   tasks:
   - name: Provision cluster nodes
-      vmware_guest:
-        validate_certs: False
-        hostname: "{{ vc_hostname }}"
-        username: "{{ vc_username }}"
-        password: "{{ vc_passwd }}"
-        name: "{{ item.server_name }}"
-        state: poweredon
-        folder: "{{ item.folder }}"
-        disk:
-        - size_gb: 16
-          type: thin
-          datastore: ExternalDS-13
-        hardware:
-            memory_mb: 512
-            num_cpus: 1
-            osid: centos64guest
-            scsi: paravirtual
-        datacenter: "{{ dcenter }}"
-        esxi_hostname: "{{ vm_nodename }}"
-        template: "{{ item.template_name }}"
-        networks:
-        - name: VM Network
-          ip: "{{ item.ip_address }}"
-          netmask: 255.255.240.0
-          gateway: 172.16.0.1
-          domain: oteemolabs.com
-          dns_servers:
-          - 75.75.75.75
-          - 8.8.8.8
-          type: static
-        wait_for_ip_address: yes
+    vmware_guest:
+      validate_certs: False
+      hostname: "{{ vc_hostname }}"
+      username: "{{ vc_username }}"
+      password: "{{ vc_passwd }}"
+      name: "{{ item.server_name }}"
+      state: poweredon
+      folder: "{{ item.folder }}"
+      disk:
+      - size_gb: 16
+        type: thin
+        datastore: ExternalDS-13
+      hardware:
+          memory_mb: 512
+          num_cpus: 1
+          osid: centos64guest
+          scsi: paravirtual
+      datacenter: "{{ dcenter }}"
+      esxi_hostname: "{{ vm_nodename }}"
+      template: "{{ item.template_name }}"
+      networks:
+      - name: VM Network
+        ip: "{{ item.ip_address }}"
+        netmask: 255.255.240.0
+        gateway: 172.16.0.1
+        domain: oteemolabs.com
+        dns_servers:
+        - 75.75.75.75
+        - 8.8.8.8
+        type: static
+      wait_for_ip_address: yes
     with_items: "{{ servers }}"
     register: facts
   - debug:
