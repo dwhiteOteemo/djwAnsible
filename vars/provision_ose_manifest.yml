@@ -25,10 +25,7 @@ infra_servers:
     networks:
     - name: VM Network
       ip: 172.16.0.29
-      netmask: 255.255.240.0
-      gateway: 172.16.0.1
-      domain: oteemolabs.com
-      dns_servers:
-       - 75.75.75.75
-       - 8.8.8.8
+      netmask: "{{ vm_nw_netmask }}"
+      gateway: "{{ vm_nw_gateway }}"
+      domain: "{{ vm_nw_domain }}"
       type: static
