@@ -15,10 +15,10 @@ master_servers:
   - server_name: ose-master01
     folder: /Lab/vm/OSE
     ip_address: 172.16.0.51
-    template_name: baselineTemplate
+    template_name: ose-master
 
 infra_servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
     ip_address: 172.16.0.52
-    template_name: ose-master
+    template_name: baselineTemplate
