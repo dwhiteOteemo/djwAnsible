@@ -37,6 +37,32 @@ master_servers:
       num_cpus: 1
       osid: rhel7_64Guest
       scsi: paravirtual
+      
+  - server_name: ose-master02
+    folder: /Lab/vm/OSE
+    template_name: ose-master
+    networks:
+    - name: "{{ vm_nw }}"
+      ip: 172.16.0.52
+      netmask: "{{ vm_nw_netmask }}"
+      gateway: "{{ vm_nw_gateway }}"
+      domain: "{{ vm_nw_domain }}"
+      type: static
+    disk:
+    - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 32
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 20
+      type: thin
+      datastore: "{{ data_store }}"
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
             
 infra_servers:
   - server_name: ose-infra01
@@ -45,6 +71,26 @@ infra_servers:
     networks:
     - name: "{{ vm_nw }}"
       ip: 172.16.0.54
+      netmask: "{{ vm_nw_netmask }}"
+      gateway: "{{ vm_nw_gateway }}"
+      domain: "{{ vm_nw_domain }}"
+      type: static
+    disk:
+    - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
+
+  - server_name: ose-infra02
+    folder: /Lab/vm/OSE
+    template_name: baselineTemplate
+    networks:
+    - name: "{{ vm_nw }}"
+      ip: 172.16.0.55
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
