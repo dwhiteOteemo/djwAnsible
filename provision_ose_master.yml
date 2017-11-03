@@ -33,16 +33,7 @@
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
-      networks:
-      - name: VM Network
-        ip: "{{ item.ip_address }}"
-        netmask: 255.255.240.0
-        gateway: 172.16.0.1
-        domain: oteemolabs.com
-        dns_servers:
-        - 75.75.75.75
-        - 8.8.8.8
-        type: static
+      networks: "{{ item.vm_network }}"
       wait_for_ip_address: yes
     with_items: "{{ servers }}"
     register: facts
