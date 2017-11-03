@@ -46,13 +46,13 @@
 
     with_items:
         - name: clusternode01
-          folder: /Lab/vm/CloudForms
+          folder: /Lab/vm/CloudForms/OSE
           datastore: ExternalDS-13
           vm_template: baselineTemplate
           vm_nodename: 172.16.5.13
-          vm_ip: 172.16.0.61
+          vm_ip: 172.16.0.51
         - name: clusternode02
-          folder: /Lab/vm/CloudForms
+          folder: /Lab/vm/CloudForms/OSE
           datastore: ExternalDS-13
           vm_template: baselineTemplate
           vm_nodename: 172.16.5.13
