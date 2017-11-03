@@ -9,7 +9,7 @@
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     dcenter: "{{ data_center }}"
-    servers: "{{ infra_servers }}"
+    servers: "{{ master_servers }}"
     vm_nodename: "{{ vm_host }}"
     vm_nw: "{{ vm_nw }}"
     vm_nw_gateway: "{{ vm_nw_gateway }}"
@@ -28,15 +28,8 @@
       name: "{{ item.server_name }}"
       state: poweredon
       folder: "{{ item.folder }}"
-      disk:
-      - size_gb: 16
-        type: thin
-        datastore: ExternalDS-13
-      hardware:
-          memory_mb: 512
-          num_cpus: 1
-          osid: centos64guest
-          scsi: paravirtual
+      disk: " {{ item.disk }}"
+      hardware: "{{ item.hardware }}"
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"

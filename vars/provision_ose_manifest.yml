@@ -26,7 +26,7 @@ master_servers:
       type: thin
       datastore: "{{ data_store }}"
     networks:
-    - name: VM Network
+    - name: "{{ vm_nw }}"
       ip: 172.16.0.51
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"

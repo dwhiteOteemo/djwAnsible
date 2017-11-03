@@ -29,11 +29,7 @@
       state: poweredon
       folder: "{{ item.folder }}"
       disk: " {{ item.disk }}"
-      hardware:
-          memory_mb: 512
-          num_cpus: 1
-          osid: centos64guest
-          scsi: paravirtual
+      hardware: "{{ item.hardware }}"
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
