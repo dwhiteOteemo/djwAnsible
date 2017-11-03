@@ -11,6 +11,11 @@
     dcenter: "{{ data_center }}"
     servers: "{{ master_servers }}"
     vm_nodename: "{{ vm_host }}"
+    vm_nw: "{{ vm_nw }}"
+    vm_nw_gateway: "{{ vm_nw_gateway }}"
+    vm_nw_domain: "{{ vm_nw_domain }}"
+    vm_nw_netmask: "{{ vm_nw_netmask }}"
+    vm_nw_type: "{{ vm_nw_type }}"
   tasks:
   - name: Provision cluster nodes
     vmware_guest:
@@ -33,7 +38,16 @@
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
-      networks: "{{ item.vm_network }}"
+      networks:
+      - name: "{{ item.vm_nw }}"
+        ip: "{{ item.ip_address }}"
+        netmask: "{{ vm_nw_netmask }}"
+        gateway: "{{ vm_nw_gateway }}"
+        domain: "{{ vm_nw_domain }}"
+        dns_servers:
+        - 75.75.75.75
+        - 8.8.8.8
+        type: "{{ vm_nw_type }}"
       wait_for_ip_address: yes
     with_items: "{{ servers }}"
     register: facts
