@@ -56,8 +56,8 @@ infra_servers:
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
       type: static
-  disk:
-  - size_gb: 16
-    type: thin
-    datastore: "{{ data_store }}"
+    disk:
+    - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
 
