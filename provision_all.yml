@@ -56,4 +56,4 @@
           datastore: ExternalDS-13
           vm_template: baselineTemplate
           vm_nodename: 172.16.5.13
-          vm_ip: 172.16.0.62
+          vm_ip: 172.16.0.52
