@@ -22,3 +22,13 @@ infra_servers:
     folder: /Lab/vm/OSE
     ip_address: 172.16.0.52
     template_name: baselineTemplate
+    networks:
+    - name: VM Network
+      ip: 172.16.0.29
+      netmask: 255.255.240.0
+      gateway: 172.16.0.1
+      domain: oteemolabs.com
+      dns_servers:
+       - 75.75.75.75
+       - 8.8.8.8
+      type: static

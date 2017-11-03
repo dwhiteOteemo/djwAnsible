@@ -40,13 +40,7 @@
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
-      networks:
-      - name: "{{ vm_nw }}"
-        ip: "{{ item.ip_address }}"
-        netmask: "{{ vm_nw_netmask }}"
-        gateway: "{{ vm_nw_gateway }}"
-        domain: "{{ vm_nw_domain }}"
-        type: "{{ vm_nw_type }}"
+      networks: "{{ item.networks }}"
       wait_for_ip_address: no
       customization:
         dns_servers: "{{ vm_nw_dns }}"
