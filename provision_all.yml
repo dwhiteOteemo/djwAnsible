@@ -40,7 +40,7 @@
         domain: "{{ vm_domain }}"
         dns_servers:
         - 75.75.75.75
-        -8.8.8.8
+        - 8.8.8.8
         type: static
       wait_for_ip_address: yes
     register: deploy
