@@ -28,12 +28,17 @@
       name: "{{ item.server_name }}"
       state: poweredon
       folder: "{{ item.folder }}"
-      disk: " { item.disk }}"
-      hardware: 
-        memory_mb: 512
-        num_cpus: 1
-        osid: rhel7_64Guest
-        scsi: paravirtual
+      disk:
+      - size_gb: 64
+        type: thin
+        datastore: "{{ data_store }}"
+      - size_gb: 32
+        type: thin
+        datastore: "{{ data_store }}"
+      - size_gb: 20
+        type: thin
+        datastore: "{{ data_store }}"      
+      hardware: "{{ item.hardware }}"
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
