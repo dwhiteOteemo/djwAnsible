@@ -12,7 +12,7 @@ vm_nw_dns:
 vm_nw_dns_search: oteemolabs.com
 
 master_servers:
-  - server_name: ose-node01
+  - server_name: ose-node02
     folder: /Lab/vm/OSE
-    ip_address: 172.16.0.51
+    ip_address: 172.16.0.52
     template_name: baselineTemplate
