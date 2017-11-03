@@ -5,7 +5,7 @@
     vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
-    dcenter: datacentername
+    dcenter: Lab
     vm_netmask: 255.255.240.0
     vm_gateway: 172.16.0.1
     vm_domain: oteemolabs.com
