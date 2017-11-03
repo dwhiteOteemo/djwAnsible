@@ -1,9 +1,16 @@
 data_center: Lab
 data_store: ExternalDS-13
 vm_host: 172.16.5.13
+vm_nw: VM Network
+vm_nw_gateway: 172.16.0.1
+vm_nw_domain: oteemoabs.com
+vm_nw_netmask: 255.255.240.0
+vm_nw_type: static
+
 master_servers:
   - server_name: ose-node01
     folder: /Lab/vm/OSE
+    ip_address: 172.16.0.51
     template_name: baselineTemplate
     vm_network:
       name: VM Network
@@ -12,3 +19,4 @@ master_servers:
       gateway: 172.16.0.1
       domain: oteemolabs.com
       type: static
+
