@@ -32,18 +32,13 @@ master_servers:
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
       type: static
-    hardware:
-    - memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
             
 infra_servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
     template_name: baselineTemplate
     networks:
-    - name: VM Network
+    - name: "{{ vm_nw }}"
       ip: 172.16.0.54
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
@@ -53,9 +48,4 @@ infra_servers:
     - size_gb: 16
       type: thin
       datastore: "{{ data_store }}"
-    hardware:
-      memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
 
