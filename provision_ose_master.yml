@@ -47,7 +47,7 @@
         gateway: "{{ vm_nw_gateway }}"
         domain: "{{ vm_nw_domain }}"
         type: "{{ vm_nw_type }}"
-      wait_for_ip_address: yes
+      wait_for_ip_address: no
       customization:
         dns_servers: "{{ vm_nw_dns }}"
         dns_suffix: "{{ vm_nw_dns_search }}"
