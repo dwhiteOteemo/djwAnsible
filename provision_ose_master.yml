@@ -18,7 +18,7 @@
       hostname: "{{ vc_hostname }}"
       username: "{{ vc_username }}"
       password: "{{ vc_passwd }}"
-      name: "{{ item.server_name }}"
+      name: somerandomname
       state: poweredon
       folder: "{{ item.folder }}"
       disk:
