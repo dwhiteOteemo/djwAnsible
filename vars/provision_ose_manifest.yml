@@ -14,22 +14,7 @@ vm_nw_dns_search: oteemolabs.com
 master_servers:
   - server_name: ose-master01
     folder: /Lab/vm/OSE
-    template_name: ose-master
-    disk:
-    - size_gb: 64
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 32
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 20
-      type: thin
-      datastore: "{{ data_store }}"
-    hardware:
-    - memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
+    template_name: baselineTemplate
     networks:
     - name: "{{ vm_nw }}"
       ip: 172.16.0.51
@@ -37,6 +22,15 @@ master_servers:
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
       type: static
+    disk:
+    - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
             
 infra_servers:
   - server_name: ose-infra01

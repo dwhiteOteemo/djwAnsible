@@ -28,16 +28,7 @@
       name: "{{ item.server_name }}"
       state: poweredon
       folder: "{{ item.folder }}"
-      disk:
-      - size_gb: 64
-        type: thin
-        datastore: "{{ data_store }}"
-      - size_gb: 32
-        type: thin
-        datastore: "{{ data_store }}"
-      - size_gb: 20
-        type: thin
-        datastore: "{{ data_store }}"      
+      disk: " {{ item.disk }}"
       hardware: "{{ item.hardware }}"
       datacenter: "{{ dcenter }}"
       esxi_hostname: "{{ vm_nodename }}"
