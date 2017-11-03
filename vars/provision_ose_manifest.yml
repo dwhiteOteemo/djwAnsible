@@ -33,10 +33,10 @@ master_servers:
       domain: "{{ vm_nw_domain }}"
       type: static
     hardware:
-        memory_mb: 512
-        num_cpus: 1
-        osid: rhel7_64Guest
-        scsi: paravirtual
+    - memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
             
 infra_servers:
   - server_name: ose-infra01
