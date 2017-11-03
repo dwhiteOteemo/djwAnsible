@@ -23,3 +23,5 @@
           folder: /Lab/vm/CloudForms
         - name: mynewvmZ
           folder: /Lab/vm/CloudForms
+        - name: cfme-x
+          folder: /Lab/vm/CloudForms
