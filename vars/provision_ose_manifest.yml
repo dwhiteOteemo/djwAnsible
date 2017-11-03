@@ -6,6 +6,9 @@ vm_nw_gateway: 172.16.0.1
 vm_nw_domain: oteemoabs.com
 vm_nw_netmask: 255.255.240.0
 vm_nw_type: static
+vm_nw_dns: 
+ - 75.75.75.75
+ - 8.8.8.8
 
 master_servers:
   - server_name: ose-node01
