@@ -39,7 +39,7 @@
       esxi_hostname: "{{ vm_nodename }}"
       template: "{{ item.template_name }}"
       networks:
-      - name: "{{ item.vm_nw }}"
+      - name: "{{ vm_nw }}"
         ip: "{{ item.ip_address }}"
         netmask: "{{ vm_nw_netmask }}"
         gateway: "{{ vm_nw_gateway }}"
