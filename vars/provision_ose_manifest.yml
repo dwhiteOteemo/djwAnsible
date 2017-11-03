@@ -54,7 +54,7 @@ infra_servers:
       type: thin
       datastore: "{{ data_store }}"
     hardware:
-    - memory_mb: 512
+      memory_mb: 512
       num_cpus: 1
       osid: rhel7_64Guest
       scsi: paravirtual
