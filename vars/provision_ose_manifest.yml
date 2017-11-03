@@ -9,6 +9,7 @@ vm_nw_type: static
 vm_nw_dns: 
  - 75.75.75.75
  - 8.8.8.8
+vm_nw_dns_search: oteemolabs.com
 
 master_servers:
   - server_name: ose-node01

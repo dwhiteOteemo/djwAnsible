@@ -17,6 +17,7 @@
     vm_nw_netmask: "{{ vm_nw_netmask }}"
     vm_nw_type: "{{ vm_nw_type }}"
     vm_nw_dns: "{{ vm_nw_dns }}"
+    vm_nw_dns_search: "{{ vm_nw_dns_search }}"
   tasks:
   - name: Provision cluster nodes
     vmware_guest:
@@ -45,10 +46,11 @@
         netmask: "{{ vm_nw_netmask }}"
         gateway: "{{ vm_nw_gateway }}"
         domain: "{{ vm_nw_domain }}"
-        dns_servers: 
-            "{{ vm_nw_dns }}"
         type: "{{ vm_nw_type }}"
       wait_for_ip_address: yes
+      customization:
+        dns_servers: "{{ vm_nw_dns }}"
+        dns_suffix: "{{ vm_nw_dns_search }}"
     with_items: "{{ servers }}"
     register: facts
   - debug:
