@@ -1,6 +1,0 @@
-- master_servers:
-  server_name: cfme-x
-    folder: /Lab/vm/CloudForms
-  server_name: cfme-tower
-    folder: /Lab/vm/CloudForms
-
