@@ -2,7 +2,7 @@ data_center: Lab
 data_store: ExternalDS-13
 vm_host: 172.16.5.13
 master_servers:
-  - server_name: ose_node01
+  - server_name: ose-node01
     folder: /Lab/vm/OSE
     ip_address: 172.16.0.51
     template_name: baselineTemplate
