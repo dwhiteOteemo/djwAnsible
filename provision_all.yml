@@ -34,7 +34,7 @@
       networks:
       - name: VM Network
         ip: "{{ item.vm_ip }}"
-        netmask: "{{ vm_natmask }}"
+        netmask: "{{ vm_netmask }}"
         gateway: "{{ vm_gateway }}"
         domain: "{{ vm_domain }}"
         dns_servers:
