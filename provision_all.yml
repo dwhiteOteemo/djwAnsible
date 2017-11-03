@@ -10,9 +10,6 @@
     vm_netmask: 255.255.240.0
     vm_gateway: 172.16.0.1
     vm_domain: oteemolabs.com
-    vm_dns:
-      - 75.75.75.75
-      - 8.8.8.8
   tasks:
   - name: create the VM
     vmware_guest:
@@ -41,7 +38,9 @@
         netmask: "{{ vm_natmask }}"
         gateway: "{{ vm_gateway }}"
         domain: "{{ vm_domain }}"
-        dns_servers: "{{ vm_dns }}"
+        dns_servers:
+        - 75.75.75.75
+        -8.8.8.8
         type: static
       wait_for_ip_address: yes
     register: deploy
