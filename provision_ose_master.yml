@@ -8,6 +8,7 @@
     vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+    dcenter: Lab
     servers: "{{ master_servers }}"
   tasks:
   - name: get vm facts
