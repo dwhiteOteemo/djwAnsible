@@ -67,7 +67,7 @@ master_servers:
 infra_servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
-    template_name: baselineTemplate
+    template_name: ose-node
     networks:
     - name: "{{ vm_nw }}"
       ip: 172.16.0.54
@@ -87,7 +87,7 @@ infra_servers:
 
   - server_name: ose-infra02
     folder: /Lab/vm/OSE
-    template_name: baselineTemplate
+    template_name: ose-node
     networks:
     - name: "{{ vm_nw }}"
       ip: 172.16.0.55
