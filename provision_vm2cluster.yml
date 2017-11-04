@@ -7,9 +7,9 @@
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     dcenter: datacentername
     vm_name: vmname
-    vm_folder: /DCA/vm/CloudForms
+    vm_folder: /Lab/vm/CloudForms
     vm_datastore: ExternalDS-13
-    vm_nodename: 172.16.5.13
+    vm_cluster: OteemoLabs
     vm_template: baselineTemplate
   tasks:
     - name: create the VM
@@ -31,7 +31,7 @@
             osid: centos64guest
             scsi: paravirtual
         datacenter: "{{ dcenter }}"
-        esxi_hostname: "{{ vm_nodename }}"
+        cluster: "{{ vm_cluster }}"
         template: "{{ vm_template }}"
         networks:
         - name: VM Network
