@@ -1,6 +1,10 @@
 ---
 # vars file for vmware_deploy
 
+vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+
 data_center: Lab
 data_store: ExternalDS-13
 vm_host: 172.16.5.13
