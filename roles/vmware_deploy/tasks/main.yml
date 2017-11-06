@@ -1,0 +1,8 @@
+---
+# tasks file for vmware_deploy
+
+- name: Include master node deploy
+  include_tasks: provision_ose_master.yml
+
+- name: Include infra node deploy
+  include_tasks: provision_ose_infra.yml
