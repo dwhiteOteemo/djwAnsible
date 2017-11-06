@@ -1,0 +1,16 @@
+---
+# vars file for vmware_deploy
+
+vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+dcenter: "{{ data_center }}"
+servers: "{{ master_servers }}"
+vm_nodename: "{{ vm_host }}"
+vm_nw: "{{ vm_nw }}"
+vm_nw_gateway: "{{ vm_nw_gateway }}"
+vm_nw_domain: "{{ vm_nw_domain }}"
+vm_nw_netmask: "{{ vm_nw_netmask }}"
+vm_nw_type: "{{ vm_nw_type }}"
+vm_nw_dns: "{{ vm_nw_dns }}" 
+vm_nw_dns_search: "{{ vm_nw_dns_search }}"
