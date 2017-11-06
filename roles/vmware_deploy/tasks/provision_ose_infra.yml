@@ -10,7 +10,7 @@
     folder: "{{ item.folder }}"
     disk: "{{ item.disk }}"
     hardware: "{{ item.hardware }}"
-    datacenter: "{{ dcenter }}"
+    datacenter: "{{ data_center }}"
     esxi_hostname: "{{ vm_nodename }}"
     template: "{{ item.template_name }}"
     networks: "{{ item.networks }}"
