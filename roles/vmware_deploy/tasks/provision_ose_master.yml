@@ -11,7 +11,7 @@
     disk: "{{ item.disk }}"
     hardware: "{{ item.hardware }}"
     datacenter: "{{ data_center }}"
-    esxi_hostname: "{{ vm_nodename }}"
+    esxi_hostname: "{{ vm_host }}"
     template: "{{ item.template_name }}"
     networks: "{{ item.networks }}"
     wait_for_ip_address: no
