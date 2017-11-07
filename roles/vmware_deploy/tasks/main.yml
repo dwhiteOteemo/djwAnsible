@@ -9,3 +9,6 @@
 
 - name: Include node deploy
   include_tasks: provision_ose_node.yml
+
+- name: Include configure masters
+  include_tasks: config_masters.yml
