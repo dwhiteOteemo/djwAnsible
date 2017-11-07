@@ -4,10 +4,9 @@
 - name: Include master node deploy
   include_tasks:
     - provision_ose_master.yml
-    - provision_ose_infra.yml
-#
-# - name: Include infra node deploy
-#  include_tasks: provision_ose_infra.yml
+
+- name: Include infra node deploy
+ include_tasks: provision_ose_infra.yml
 #
 # - name: Include node deploy
 #  include_tasks: provision_ose_node.yml
