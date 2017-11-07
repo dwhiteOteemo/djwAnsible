@@ -18,7 +18,7 @@ vm_nw_dns:
  - 8.8.8.8
 vm_nw_dns_search: oteemolabs.com oteeemolabs.com
 
-servers:
+master-servers:
   - server_name: ose-master01
     folder: /Lab/vm/OSE
     template_name: ose-master
@@ -71,6 +71,33 @@ servers:
       osid: rhel7_64Guest
       scsi: paravirtual
 
+  - server_name: ose-master03
+    folder: /Lab/vm/OSE
+    template_name: ose-master
+    networks:
+    - name: "{{ vm_nw }}"
+      ip: 172.16.0.53
+      netmask: "{{ vm_nw_netmask }}"
+      gateway: "{{ vm_nw_gateway }}"
+      domain: "{{ vm_nw_domain }}"
+      type: static
+    disk:
+    - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 32
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 20
+      type: thin
+      datastore: "{{ data_store }}"
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+      osid: rhel7_64Guest
+      scsi: paravirtual
+
+infra-servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
     template_name: ose-node
@@ -110,3 +137,44 @@ servers:
       num_cpus: 1
       osid: rhel7_64Guest
       scsi: paravirtual
+
+node-servers:
+    - server_name: ose-node01
+      folder: /Lab/vm/OSE
+      template_name: ose-node
+      networks:
+      - name: "{{ vm_nw }}"
+        ip: 172.16.0.56
+        netmask: "{{ vm_nw_netmask }}"
+        gateway: "{{ vm_nw_gateway }}"
+        domain: "{{ vm_nw_domain }}"
+        type: static
+      disk:
+      - size_gb: 16
+        type: thin
+        datastore: "{{ data_store }}"
+      hardware:
+        memory_mb: 512
+        num_cpus: 1
+        osid: rhel7_64Guest
+        scsi: paravirtual
+
+    - server_name: ose-node02
+      folder: /Lab/vm/OSE
+      template_name: ose-node
+      networks:
+      - name: "{{ vm_nw }}"
+        ip: 172.16.0.57
+        netmask: "{{ vm_nw_netmask }}"
+        gateway: "{{ vm_nw_gateway }}"
+        domain: "{{ vm_nw_domain }}"
+        type: static
+      disk:
+      - size_gb: 16
+        type: thin
+        datastore: "{{ data_store }}"
+      hardware:
+        memory_mb: 512
+        num_cpus: 1
+        osid: rhel7_64Guest
+        scsi: paravirtual

@@ -11,14 +11,21 @@
     disk: "{{ item.disk }}"
     hardware: "{{ item.hardware }}"
     datacenter: "{{ data_center }}"
-    esxi_hostname: "{{ vm_nodename }}"
+    esxi_hostname: "{{ vm_host }}"
     template: "{{ item.template_name }}"
     networks: "{{ item.networks }}"
     wait_for_ip_address: no
     customization:
       dns_servers: "{{ vm_nw_dns }}"
       dns_suffix: "{{ vm_nw_dns_search }}"
-  with_items: "{{ servers }}"
+  with_items: "{{ infra-servers }}"
+
+- name: ensure infra are in the inventory
+  add_host:
+    name: "{{ item.server_name }}"
+    groups: infra-servers
+  with_items: "{{ infra-servers }}"
+
   register: facts
 - debug:
     var: facts
