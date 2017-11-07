@@ -19,6 +19,14 @@
       dns_servers: "{{ vm_nw_dns }}"
       dns_suffix: "{{ vm_nw_dns_search }}"
   with_items: "{{ servers }}"
+
+- name: ensure masters are in the inventory
+  add_host:
+    name: "{{ item.name }}"
+    groups: master-servers
+    ambarihostname: "{{ ambarihostname }}"
+  with_items: "{{ servers }}"
+
   register: facts
 - debug:
     var: facts
