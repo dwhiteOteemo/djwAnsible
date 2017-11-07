@@ -13,10 +13,10 @@ vm_nw_gateway: 172.16.0.1
 vm_nw_domain: oteemoabs.com
 vm_nw_netmask: 255.255.240.0
 vm_nw_type: static
-vm_nw_dns: 
+vm_nw_dns:
  - 75.75.75.75
  - 8.8.8.8
-vm_nw_dns_search: oteemolabs.com
+vm_nw_dns_search: oteemolabs.com oteeemolabs.com
 
 servers:
   - server_name: ose-master01
@@ -44,69 +44,69 @@ servers:
       num_cpus: 1
       osid: rhel7_64Guest
       scsi: paravirtual
-      
-  - server_name: ose-master02
-    folder: /Lab/vm/OSE
-    template_name: ose-master
-    networks:
-    - name: "{{ vm_nw }}"
-      ip: 172.16.0.52
-      netmask: "{{ vm_nw_netmask }}"
-      gateway: "{{ vm_nw_gateway }}"
-      domain: "{{ vm_nw_domain }}"
-      type: static
-    disk:
-    - size_gb: 16
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 32
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 20
-      type: thin
-      datastore: "{{ data_store }}"
-    hardware:
-      memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
-            
-  - server_name: ose-infra01
-    folder: /Lab/vm/OSE
-    template_name: ose-node
-    networks:
-    - name: "{{ vm_nw }}"
-      ip: 172.16.0.54
-      netmask: "{{ vm_nw_netmask }}"
-      gateway: "{{ vm_nw_gateway }}"
-      domain: "{{ vm_nw_domain }}"
-      type: static
-    disk:
-    - size_gb: 16
-      type: thin
-      datastore: "{{ data_store }}"
-    hardware:
-      memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
 
-  - server_name: ose-infra02
-    folder: /Lab/vm/OSE
-    template_name: ose-node
-    networks:
-    - name: "{{ vm_nw }}"
-      ip: 172.16.0.55
-      netmask: "{{ vm_nw_netmask }}"
-      gateway: "{{ vm_nw_gateway }}"
-      domain: "{{ vm_nw_domain }}"
-      type: static
-    disk:
-    - size_gb: 16
-      type: thin
-      datastore: "{{ data_store }}"
-    hardware:
-      memory_mb: 512
-      num_cpus: 1
-      osid: rhel7_64Guest
-      scsi: paravirtual
+  # - server_name: ose-master02
+  #   folder: /Lab/vm/OSE
+  #   template_name: ose-master
+  #   networks:
+  #   - name: "{{ vm_nw }}"
+  #     ip: 172.16.0.52
+  #     netmask: "{{ vm_nw_netmask }}"
+  #     gateway: "{{ vm_nw_gateway }}"
+  #     domain: "{{ vm_nw_domain }}"
+  #     type: static
+  #   disk:
+  #   - size_gb: 16
+  #     type: thin
+  #     datastore: "{{ data_store }}"
+  #   - size_gb: 32
+  #     type: thin
+  #     datastore: "{{ data_store }}"
+  #   - size_gb: 20
+  #     type: thin
+  #     datastore: "{{ data_store }}"
+  #   hardware:
+  #     memory_mb: 512
+  #     num_cpus: 1
+  #     osid: rhel7_64Guest
+  #     scsi: paravirtual
+  #
+  # - server_name: ose-infra01
+  #   folder: /Lab/vm/OSE
+  #   template_name: ose-node
+  #   networks:
+  #   - name: "{{ vm_nw }}"
+  #     ip: 172.16.0.54
+  #     netmask: "{{ vm_nw_netmask }}"
+  #     gateway: "{{ vm_nw_gateway }}"
+  #     domain: "{{ vm_nw_domain }}"
+  #     type: static
+  #   disk:
+  #   - size_gb: 16
+  #     type: thin
+  #     datastore: "{{ data_store }}"
+  #   hardware:
+  #     memory_mb: 512
+  #     num_cpus: 1
+  #     osid: rhel7_64Guest
+  #     scsi: paravirtual
+  #
+  # - server_name: ose-infra02
+  #   folder: /Lab/vm/OSE
+  #   template_name: ose-node
+  #   networks:
+  #   - name: "{{ vm_nw }}"
+  #     ip: 172.16.0.55
+  #     netmask: "{{ vm_nw_netmask }}"
+  #     gateway: "{{ vm_nw_gateway }}"
+  #     domain: "{{ vm_nw_domain }}"
+  #     type: static
+  #   disk:
+  #   - size_gb: 16
+  #     type: thin
+  #     datastore: "{{ data_store }}"
+  #   hardware:
+  #     memory_mb: 512
+  #     num_cpus: 1
+  #     osid: rhel7_64Guest
+  #     scsi: paravirtual
