@@ -18,7 +18,7 @@ vm_nw_dns:
  - 8.8.8.8
 vm_nw_dns_search: oteemolabs.com oteeemolabs.com
 
-master-servers:
+master_servers:
   - server_name: ose-master01
     folder: /Lab/vm/OSE
     template_name: ose-master
@@ -97,7 +97,7 @@ master-servers:
       osid: rhel7_64Guest
       scsi: paravirtual
 
-infra-servers:
+infra_servers:
   - server_name: ose-infra01
     folder: /Lab/vm/OSE
     template_name: ose-node
@@ -138,7 +138,7 @@ infra-servers:
       osid: rhel7_64Guest
       scsi: paravirtual
 
-node-servers:
+node_servers:
     - server_name: ose-node01
       folder: /Lab/vm/OSE
       template_name: ose-node

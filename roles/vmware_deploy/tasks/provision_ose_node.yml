@@ -18,13 +18,13 @@
     customization:
       dns_servers: "{{ vm_nw_dns }}"
       dns_suffix: "{{ vm_nw_dns_search }}"
-  with_items: "{{ node-servers }}"
+  with_items: "{{ node_servers }}"
 
 - name: ensure node are in the inventory
   add_host:
     name: "{{ item.server_name }}"
-    groups: node-servers
-  with_items: "{{ node-servers }}"
+    groups: nodeservers
+  with_items: "{{ node_servers }}"
 
   register: facts
 - debug:
