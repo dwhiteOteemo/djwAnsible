@@ -2,7 +2,6 @@
   hosts: all
   vars:
     simplemessage: Message
-  become: true
   tasks:
     - name: Get hostname
       command: hostname
