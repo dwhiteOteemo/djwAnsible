@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  vars:
+    description: “Provision a VM from a template”
+    vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+    vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+    dcenter: datacentername
+    vm_name: vmname
+    vm_folder: /DCA/vm/CloudForms
+    vm_cluster: clustername
+    vm_template: baselineTemplate
+  tasks:
+    - name: create the VM
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_username }}"
+        password: "{{ vc_passwd }}"
+        name: "{{ vm_name }}"
+        state: poweredon
+        folder: "{{ vm_folder }}"
+        disk:
+        - size_gb: 40
+          type: thin
+          datastore: ExternalDS-13
+        hardware:
+            memory_mb: 512
+            num_cpus: 1
+            osid: centos64guest
+            scsi: paravirtual
+        datacenter: "{{ dcenter }}"
+        cluster: "{{ vm_cluster }}"
+        template: "{{ vm_template }}"
+        networks:
+        - name: VM Network
+          ip: 172.16.0.29
+          netmask: 255.255.240.0
+          gateway: 172.16.0.1
+          domain: oteemolabs.com
+          dns_servers:
+          - 75.75.75.75
+          - 8.8.8.8
+          type: static
+        wait_for_ip_address: yes
+      register: deploy
+
