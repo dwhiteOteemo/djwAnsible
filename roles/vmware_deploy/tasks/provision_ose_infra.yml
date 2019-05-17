@@ -26,6 +26,12 @@
     groups: infraservers
   with_items: "{{ infra_servers }}"
 
+- name: ensure infra are in the inventory
+  add_host:
+    name: "{{ item.networks[0].ip }}"
+    groups: nodes
+  with_items: "{{ infra_servers }}"
+
   register: facts
 - debug:
     var: facts

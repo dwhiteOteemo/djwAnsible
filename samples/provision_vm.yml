@@ -5,10 +5,10 @@
     vc_hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     vc_username: "{{ lookup('env', 'VMWARE_USER') }}"
     vc_passwd: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
-    dcenter: datacentername
-    vm_name: vmname
-    vm_folder: /DCA/vm/CloudForms
-    vm_cluster: clustername
+    dcenter: Lab
+    vm_name: superduper
+    vm_folder: Lab/vm/SuperDave
+    vm_cluster: OteemoLabs
     vm_template: baselineTemplate
   tasks:
     - name: create the VM

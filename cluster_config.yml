@@ -1,0 +1,9 @@
+---
+  - name: Configure ocp cluster
+    hosts: nodes
+    gather_facts: False
+    become: yes
+    become_user: root
+    tags: configuration
+    roles:
+      - configure_nodes

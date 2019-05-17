@@ -26,6 +26,18 @@
     groups: masterservers
   with_items: "{{ master_servers }}"
 
+- name: ensure masters are in the inventory
+  add_host:
+    name: "{{ item.networks[0].ip }}"
+    groups: nodes
+  with_items: "{{ master_servers }}"
+
   register: facts
 - debug:
     var: facts
+
+- name: show all the hosts matching the pattern
+  debug:
+    msg: "{{ item }}"
+  with_inventory_hostnames:
+    - all

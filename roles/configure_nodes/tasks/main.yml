@@ -1,0 +1,168 @@
+---
+# tasks file for node configuration
+- pause: seconds=60
+
+- name: Install prerequisites for OCP
+  yum:
+    name:
+      - wget
+      - git
+      - net-tools
+      - bind-utils 
+      - yum-utils 
+      - iptables-services 
+      - bridge-utils 
+      - bash-completion 
+      - kexec-tools 
+      - sos 
+      - psacct
+    state: present
+
+- name: Install NetworkManager
+  yum: 
+      name: NetworkManager
+      state: present
+
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+
+# - name: Reboot 
+#   shell: "sleep 5 && reboot"
+#   async: 1
+#   poll: 0        
+
+# - pause: seconds=60
+
+- name: install EPEL repository
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+
+
+- name: Disable the EPEL repository globally so that it is not accidentally used during later steps of the installation
+  lineinfile:
+      path: /etc/yum.repos.d/epel.repo
+      regexp: '^enabled=1'
+      line: 'enabled=0'
+
+- name: Install ansible
+  yum:
+    name:
+      - ansible
+      - pyOpenSSL
+    state: latest
+
+- name: Install pip
+  easy_install:
+    name: pip
+    state: latest
+
+- name: Install ansible
+  pip:
+    name: ansible
+    version: 2.6.2
+
+# - name: Install pyOpenSSL
+#   yum:
+#     name: pyOpenSSL
+#     state: latest
+
+- name: Clone the openshift playbooks
+  git:
+    repo: 'https://github.com/openshift/openshift-ansible'
+    dest: "{{ git_dir }}"
+    version: release-3.11
+
+
+- name: Install Docker
+  yum: 
+      name: docker-1.13.1
+      state: present
+
+- name: "Check for docker-storage-setup mods"
+  lineinfile:
+    name: /etc/sysconfig/docker-storage-setup
+    line: "DEVS=/dev/xvdb"
+    state: present
+  check_mode: yes
+  register: conf
+
+- name: setup docker storage file
+  lineinfile:
+    path: /etc/sysconfig/docker-storage-setup
+    line: "{{ item.line }}"
+  with_items:
+    - { line: 'DEVS=/dev/sdb' }
+    - { line: 'VG=docker-vg' }
+  when: conf.changed
+
+- name: Create sdocker storage pool
+  command: 'docker-storage-setup'
+
+- name: Limit the size of the container logfiles.
+  lineinfile:
+      path: /etc/sysconfig/docker
+      regexp: "^OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false'"
+      line: "OPTIONS='--insecure-registry=172.30.0.0/16 --selinux-enabled --log-driver=journald --signature-verification=false'"
+
+- name: Enable and restart docker service
+  service:
+    name: docker
+    enabled: yes
+    state: restarted
+
+- name: Install Docker novolume
+  yum: 
+      name: docker-novolume-plugin
+      state: present
+
+- name: Enable and start docker novolume
+  service:
+    name: docker-novolume-plugin
+    enabled: yes
+    state: started
+
+- name: Check for docker configuration
+  lineinfile:
+    name: /etc/sysconfig/docker
+    line: "OPTIONS='--authorization-plugin=docker-novolume-plugin'"
+    state: present
+  check_mode: yes
+  register: docker_conf
+
+- name: setup docker storage file
+  lineinfile:
+    path: /etc/sysconfig/docker-storage-setup
+    line: "OPTIONS='--authorization-plugin=docker-novolume-plugin'"
+    insertafter: EOF
+  when: docker_conf.changed == false
+
+- name: Create ansible directory
+  file:
+    path: /etc/ansible
+    state: directory
+    mode: 0755
+
+- name: Copy host file for openshift
+  copy:
+    src: files/hosts
+    dest: /etc/ansible/hosts
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+# - name: Add the newly created EC2 instance(s) to the local host group (located inside the directory) //TODO Fix to dynamic inv
+#   local_action: lineinfile 
+#                 dest="/home/centos/hosts" 
+#                 regexp="{{ item }}"
+#                 insertafter="[openshift]" line="{{ item }}"
+#   with_items: "{{ groups.masters }}"
+
+
+
+# - name: Create the docker group
+#   group:
+#     name: docker
+#     state: present

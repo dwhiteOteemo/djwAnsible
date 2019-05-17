@@ -9,6 +9,10 @@ data_center: Lab
 data_store: ExternalDS-13
 vm_host: 172.16.5.13
 vm_nw: VM Network
+vm_folder: /Lab/vm/OCluster01
+ose_master: ocp-djw
+ose_infra: ocp-djw
+ose_node: ocp-djw
 vm_nw_gateway: 172.16.0.1
 vm_nw_domain: oteemoabs.com
 vm_nw_netmask: 255.255.240.0
@@ -20,11 +24,11 @@ vm_nw_dns_search: oteemolabs.com oteeemolabs.com
 
 master_servers:
   - server_name: ose-master01
-    folder: /Lab/vm/OSE
-    template_name: ose-master
+    folder: "{{ vm_folder }}"
+    template_name: "{{ ose_master }}"
     networks:
     - name: "{{ vm_nw }}"
-      ip: 172.16.0.51
+      ip: 172.16.0.11
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
@@ -34,9 +38,6 @@ master_servers:
       type: thin
       datastore: "{{ data_store }}"
     - size_gb: 32
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 20
       type: thin
       datastore: "{{ data_store }}"
     hardware:
@@ -46,11 +47,11 @@ master_servers:
       scsi: paravirtual
 
   - server_name: ose-master02
-    folder: /Lab/vm/OSE
-    template_name: ose-master
+    folder: "{{ vm_folder }}"
+    template_name: "{{ ose_master }}"
     networks:
     - name: "{{ vm_nw }}"
-      ip: 172.16.0.52
+      ip: 172.16.0.12
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
@@ -60,9 +61,6 @@ master_servers:
       type: thin
       datastore: "{{ data_store }}"
     - size_gb: 32
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 20
       type: thin
       datastore: "{{ data_store }}"
     hardware:
@@ -72,11 +70,11 @@ master_servers:
       scsi: paravirtual
 
   - server_name: ose-master03
-    folder: /Lab/vm/OSE
-    template_name: ose-master
+    folder: "{{ vm_folder }}"
+    template_name: "{{ ose_master }}"
     networks:
     - name: "{{ vm_nw }}"
-      ip: 172.16.0.53
+      ip: 172.16.0.13
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
@@ -86,9 +84,6 @@ master_servers:
       type: thin
       datastore: "{{ data_store }}"
     - size_gb: 32
-      type: thin
-      datastore: "{{ data_store }}"
-    - size_gb: 20
       type: thin
       datastore: "{{ data_store }}"
     hardware:
@@ -99,17 +94,20 @@ master_servers:
 
 infra_servers:
   - server_name: ose-infra01
-    folder: /Lab/vm/OSE
-    template_name: ose-node
+    folder: "{{ vm_folder }}"
+    template_name: "{{ ose_infra }}"
     networks:
     - name: "{{ vm_nw }}"
-      ip: 172.16.0.54
+      ip: 172.16.0.14
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
       type: static
     disk:
     - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 32
       type: thin
       datastore: "{{ data_store }}"
     hardware:
@@ -119,17 +117,20 @@ infra_servers:
       scsi: paravirtual
 
   - server_name: ose-infra02
-    folder: /Lab/vm/OSE
-    template_name: ose-node
+    folder: "{{ vm_folder }}"
+    template_name: "{{ ose_infra }}"
     networks:
     - name: "{{ vm_nw }}"
-      ip: 172.16.0.55
+      ip: 172.16.0.15
       netmask: "{{ vm_nw_netmask }}"
       gateway: "{{ vm_nw_gateway }}"
       domain: "{{ vm_nw_domain }}"
       type: static
     disk:
     - size_gb: 16
+      type: thin
+      datastore: "{{ data_store }}"
+    - size_gb: 32
       type: thin
       datastore: "{{ data_store }}"
     hardware:
@@ -140,17 +141,43 @@ infra_servers:
 
 node_servers:
     - server_name: ose-node01
-      folder: /Lab/vm/OSE
-      template_name: ose-node
+      folder: "{{ vm_folder }}"
+      template_name: "{{ ose_node }}"
       networks:
       - name: "{{ vm_nw }}"
-        ip: 172.16.0.56
+        ip: 172.16.0.16
         netmask: "{{ vm_nw_netmask }}"
         gateway: "{{ vm_nw_gateway }}"
         domain: "{{ vm_nw_domain }}"
         type: static
       disk:
       - size_gb: 16
+        type: thin
+        datastore: "{{ data_store }}"
+      - size_gb: 32
+        type: thin
+        datastore: "{{ data_store }}"        
+      hardware:
+        memory_mb: 512
+        num_cpus: 1
+        osid: rhel7_64Guest
+        scsi: paravirtual
+
+    - server_name: ose-node02
+      folder: "{{ vm_folder }}"
+      template_name: "{{ ose_node }}"
+      networks:
+      - name: "{{ vm_nw }}"
+        ip: 172.16.0.17
+        netmask: "{{ vm_nw_netmask }}"
+        gateway: "{{ vm_nw_gateway }}"
+        domain: "{{ vm_nw_domain }}"
+        type: static
+      disk:
+      - size_gb: 16
+        type: thin
+        datastore: "{{ data_store }}"
+      - size_gb: 32
         type: thin
         datastore: "{{ data_store }}"
       hardware:
@@ -159,22 +186,35 @@ node_servers:
         osid: rhel7_64Guest
         scsi: paravirtual
 
-    - server_name: ose-node02
-      folder: /Lab/vm/OSE
-      template_name: ose-node
-      networks:
-      - name: "{{ vm_nw }}"
-        ip: 172.16.0.57
-        netmask: "{{ vm_nw_netmask }}"
-        gateway: "{{ vm_nw_gateway }}"
-        domain: "{{ vm_nw_domain }}"
-        type: static
-      disk:
-      - size_gb: 16
-        type: thin
-        datastore: "{{ data_store }}"
-      hardware:
-        memory_mb: 512
-        num_cpus: 1
-        osid: rhel7_64Guest
-        scsi: paravirtual
+# Leftovers from AWS
+# vars file for openshift-provision
+vpc_name: superdave-openshift-vpc
+vpc_cidr: 10.0.0.0/28
+subnet_name: superdave-openshift-subnet
+subnet_cidr: 10.0.0.0/28
+igw_name: superdave-openshift-igw
+public_route_name: superdave-openshift-rt
+security_group_name: superdave-openshift-sg1
+security_group: superdave-openshift-sg1,default
+image: ami-9cbf9bf9
+keypair: superdave-openshift
+region: us-east-2
+count: 1
+i_tags: {"Name":"superdave-oc-origin"}
+boot_vol_size: 50
+data_vol_size: 50
+master_count: 1
+master_size: t2.xlarge
+master_private_ip: 10.0.0.10
+worker_count: 2
+worker_size: t2.large
+git_dir: /home/ansible/repos
+
+os_servername: superdave-oc-origin
+p_user: ec2-user
+os_url: https://github.com/openshift/origin/releases/download/v3.10.0
+os_archfile: openshift-origin-client-tools-v3.10.0-dd10d17-linux-64bit
+os_archdir: /tmp
+che_url: https://raw.githubusercontent.com/eclipse/che/master/deploy/openshift
+che_archfile: deploy_che.sh
+che_dir: /home/ec2-user
